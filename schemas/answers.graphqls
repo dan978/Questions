@@ -1,0 +1,31 @@
+extend type Mutation{
+  CreateAnswer(input:CreateAnswerForm):Answer
+}
+
+input CreateAnswerForm {
+  questionID: ID!
+  text: String
+  choiceID: ID
+  userID: ID!
+}
+
+interface Answer {
+  id: ID!
+  questionID: ID!
+  userID: ID!
+}
+
+type TextAnswer implements Answer{
+  id: ID!
+  questionID: ID!
+  userID: ID!
+  text: String!
+}
+
+type ChoiceAnswer implements Answer{
+  id: ID!
+  questionID: ID!
+  userID: ID!
+  choiceID: ID!
+}
+

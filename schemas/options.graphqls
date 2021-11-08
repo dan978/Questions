@@ -1,0 +1,5 @@
+type Option {
+  id: ID!
+  text: String!
+  weight: Float!
+}

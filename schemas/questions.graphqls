@@ -1,0 +1,20 @@
+extend type Query{
+  GetQuestions: [Question!]!
+}
+
+interface Question {
+  id: ID!
+  weight: Float!
+}
+
+type TextQuestion implements Question {
+  id: ID!
+  weight: Float!
+  text: String!
+}
+type ChoiceQuestion implements Question{
+  id: ID!
+  weight: Float!
+  options: [Option!]!
+  text: String!
+}
