@@ -1,7 +1,9 @@
 * {
   font-size: 20px;
   margin:0.5rem;
+  
 }
+
 
 #root{
  /*  display:flex;
@@ -9,7 +11,10 @@
   flex-wrap: row wrap;
     */
     display: grid;
-
+    margin:0%;
+    min-width: 300px;
+    max-width: 700px;
+    
 }
 
 .form-select {
