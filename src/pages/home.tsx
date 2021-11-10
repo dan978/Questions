@@ -2,7 +2,9 @@ import React from "react";
 import Question from "../components/question";
 import { ChangeEvent, useState } from "react";
 import Score from "../components/score";
+import { useMutation, gql } from "@apollo/client";
 import "../Index.css";
+import NewAnswerForm from "../components/answers";
 
 function HomePage() {
   type HandleInputChange = ChangeEvent<HTMLSelectElement>;
@@ -26,6 +28,14 @@ function HomePage() {
     questionValue[1] +
     questionValue[2];
 
+  const SAVE_ROCKET = gql`
+    mutation saveRocket($rocket: RocketInput!) {
+      saveRocket(rocket: $rocket) {
+        model
+      }
+    }
+  `;
+
   return (
     <div id="root" className="card text-white bg-secondary mb-3">
       <p>
@@ -38,7 +48,12 @@ function HomePage() {
         ))}
       </p>
       <span>
-        <select className="form-select" id="exampleSelect1" value={opt} onChange={handleInputChange}>
+        <select
+          className="form-select"
+          id="exampleSelect1"
+          value={opt}
+          onChange={handleInputChange}
+        >
           {questions[0].options.map((option) => (
             <>
               <option value={option.weight} title={option.text}>
@@ -49,7 +64,12 @@ function HomePage() {
         </select>
       </span>
       <span>
-        <select className="form-select" id="exampleSelect1" value={opt1} onChange={handleInputChange1}>
+        <select
+          className="form-select"
+          id="exampleSelect1"
+          value={opt1}
+          onChange={handleInputChange1}
+        >
           {questions[1].options.map((option) => (
             <>
               <option value={option.weight} title={option.text}>
@@ -60,7 +80,12 @@ function HomePage() {
         </select>
       </span>
       <span>
-        <select className="form-select" id="exampleSelect1" value={opt2} onChange={handleInputChange2}>
+        <select
+          className="form-select"
+          id="exampleSelect1"
+          value={opt2}
+          onChange={handleInputChange2}
+        >
           {questions[2].options.map((option) => (
             <>
               <option value={option.weight} title={option.text}>
@@ -76,6 +101,7 @@ function HomePage() {
         </p>
       )) ||
         counter === 0}
+      <NewAnswerForm></NewAnswerForm>
     </div>
   );
 }
